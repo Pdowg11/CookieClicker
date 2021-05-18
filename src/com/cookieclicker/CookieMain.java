@@ -7,6 +7,11 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+/**
+ * Cookie Clicker Program
+ * @author Preston
+ */
+
 public class CookieMain {
 
     JLabel counterLabel, perSecLabel;
@@ -33,10 +38,16 @@ public class CookieMain {
     JTextArea messageText;
     final MouseHandler mHandler = new MouseHandler();
 
+    /**
+     * Main Method
+     */
     public static void main(String[] args) {
         new CookieMain();
     }
 
+    /**
+     * Class Constructor
+     */
     public CookieMain() {
 
         timerOn = false;
@@ -65,12 +76,20 @@ public class CookieMain {
         createFont();
         createUI();
     }
+
+    /**
+     * Font Creation
+     */
     public void createFont() {
 
         font1 = new Font("Comic Sans MS", Font.PLAIN, 32);
         font2 = new Font("Comic Sans MS", Font.PLAIN, 15);
 
     }
+
+    /**
+     * Entire UI creation
+     */
     public void createUI() {
 
         JFrame window = new JFrame();
@@ -216,6 +235,12 @@ public class CookieMain {
 
         window.setVisible(true);
     }
+
+    /**
+     * Game Timer creation<br>
+     * Updates the cookieCounter everytime the Timer ticks<br>
+     * Updates whether buttons are unlocked every time the Timer ticks
+     */
     public void setTimer() {
 
         timer = new Timer(timerSpeed, e -> {
@@ -263,6 +288,10 @@ public class CookieMain {
             }
         });
     }
+
+    /**
+     * Updates the Timer based on CPS speed
+     */
     public void timerUpdate() {
 
         if(!timerOn) {
@@ -437,24 +466,39 @@ public class CookieMain {
 
     public class MouseHandler implements MouseListener {
 
+        /**
+         * Needed for MouseListener but never used<br>
+         * Can be ignored
+         */
         @Override
         public void mouseClicked(MouseEvent e) {
             // TODO Auto-generated method stub
 
         }
 
+        /**
+         * Needed for MouseListener but never used<br>
+         * Can be ignored
+         */
         @Override
         public void mousePressed(MouseEvent e) {
             // TODO Auto-generated method stub
 
         }
 
+        /**
+         * Needed for MouseListener but never used<br>
+         * Can be ignored
+         */
         @Override
         public void mouseReleased(MouseEvent e) {
             // TODO Auto-generated method stub
 
         }
 
+        /**
+         * Shows descriptions for buttons and upgrades when the mouse is hovered over them
+         */
         @Override
         public void mouseEntered(MouseEvent e) {
             JButton button = (JButton)e.getSource();
