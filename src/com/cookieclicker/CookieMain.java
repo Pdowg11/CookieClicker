@@ -12,7 +12,7 @@ import javax.swing.*;
  * @author Preston
  */
 
-public class CookieMain {
+public class CookieMain extends JFrame {
 
     JLabel counterLabel, perSecLabel;
     JButton button1, button2, button3, button4, cursorUpgradeButton, grandpaUpgradeButton, farmUpgradeButton, factoryUpgradeButton;
@@ -140,7 +140,7 @@ public class CookieMain {
         JPanel itemPanel = new JPanel();
         itemPanel.setBounds(500,170,250,250);
         itemPanel.setBackground(Color.black);
-        itemPanel.setLayout(new GridLayout(10,1));
+        itemPanel.setLayout(new GridLayout(5,2));
         window.add(itemPanel, new JScrollPane(itemPanel));
 
         button1 = new JButton("Cursor");
@@ -564,6 +564,9 @@ public class CookieMain {
             }
         }
 
+        /**
+         * Changes everything back to showing nothing once the mouse stops hovering over the button
+         */
         @Override
         public void mouseExited(MouseEvent e) {
             JButton button = (JButton)e.getSource();
