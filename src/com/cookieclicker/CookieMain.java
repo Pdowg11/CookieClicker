@@ -11,7 +11,6 @@ import javax.swing.*;
  * Cookie Clicker Program
  * @author Preston
  */
-
 public class CookieMain extends JFrame {
 
     JLabel counterLabel, perSecLabel;
@@ -30,7 +29,7 @@ public class CookieMain extends JFrame {
     final int grandpaUpgradePrice;
     final int farmUpgradePrice;
     final int factoryUpgradePrice;
-    double perSecond;
+    double perSecond, cursorPerSec, grandpaPerSec, farmPerSec, factoryPerSec;
     boolean timerOn, grandpaUnlocked, farmUnlocked, factoryUnlocked, cursorUpgradeUnlocked, cursorUpgradeActive, grandpaUpgradeUnlocked, grandpaUpgradeActive, farmUpgradeUnlocked, farmUpgradeActive, factoryUpgradeUnlocked, factoryUpgradeActive;
     Font font1, font2;
     final CookieHandler cHandler = new CookieHandler();
@@ -55,14 +54,18 @@ public class CookieMain extends JFrame {
         cookieCounter = 0;
         cursorNumber = 0;
         cursorPrice = 20;
+        cursorPerSec = 0.1;
         grandpaNumber = 0;
         grandpaPrice = 100;
+        grandpaPerSec = 1.0;
         grandpaUnlocked = false;
         farmNumber = 0;
         farmPrice = 1000;
+        farmPerSec = 10;
         farmUnlocked = false;
         factoryNumber = 0;
         factoryPrice = 10000;
+        factoryPerSec = 50;
         factoryUnlocked = false;
         cursorUpgradePrice = 250;
         cursorUpgradeActive = false;
@@ -342,9 +345,9 @@ public class CookieMain extends JFrame {
                         cursorNumber++;
                         button1.setText("Cursor " + "(" + cursorNumber + ")");
                         if (cursorUpgradeActive) {
-                            perSecond = 2 * (perSecond + 0.1);
+                            perSecond = perSecond + 2*cursorPerSec;
                         } else {
-                            perSecond = perSecond + 0.1;
+                            perSecond = perSecond + cursorPerSec;
                         }
                         timerUpdate();
                     }
@@ -361,7 +364,7 @@ public class CookieMain extends JFrame {
                         grandpaNumber++;
                         button2.setText("Grandpa " + "(" + grandpaNumber + ")");
                         if(grandpaUpgradeActive) {
-                            perSecond = 2 * (perSecond + 1);
+                            perSecond = perSecond + 2;
                         }
                         else {
                             perSecond = perSecond + 1;
@@ -381,7 +384,7 @@ public class CookieMain extends JFrame {
                         farmNumber++;
                         button3.setText("Farm " + "(" + farmNumber + ")");
                         if(farmUpgradeActive = true) {
-                            perSecond = 2 * (perSecond + 10);
+                            perSecond = perSecond + 20;
                         }
                         else {
                             perSecond = perSecond + 10;
@@ -401,7 +404,7 @@ public class CookieMain extends JFrame {
                         factoryNumber++;
                         button4.setText("Factory " + "(" + factoryNumber + ")");
                         if(factoryUpgradeActive = true) {
-                            perSecond = 2 * (perSecond + 50);
+                            perSecond = perSecond + 100;
                         }
                         else {
                             perSecond = perSecond + 50;
@@ -418,6 +421,9 @@ public class CookieMain extends JFrame {
                         counterLabel.setText(cookieCounter + " cookies");
                         cursorUpgradeActive = true;
                         cursorUpgradeButton.setIcon(cursorCheck);
+                        for (int temp = 0;temp<cursorNumber;temp++) {
+                            perSecond = perSecond + cursorPerSec;
+                        }
                         timerUpdate();
                     }
                     else {
@@ -430,6 +436,9 @@ public class CookieMain extends JFrame {
                         counterLabel.setText(cookieCounter + " cookies");
                         grandpaUpgradeActive = true;
                         grandpaUpgradeButton.setIcon(grandpaCheck);
+                        for (int temp = 0;temp<grandpaNumber;temp++) {
+                            perSecond = perSecond + grandpaPerSec;
+                        }
                         timerUpdate();
                     }
                     else {
@@ -442,6 +451,9 @@ public class CookieMain extends JFrame {
                         counterLabel.setText(cookieCounter + " cookies");
                         farmUpgradeActive = true;
                         farmUpgradeButton.setIcon(farmCheck);
+                        for (int temp = 0;temp<farmNumber;temp++) {
+                            perSecond = perSecond + farmPerSec;
+                        }
                         timerUpdate();
                     }
                     else {
@@ -454,6 +466,9 @@ public class CookieMain extends JFrame {
                         counterLabel.setText(cookieCounter + " cookies");
                         factoryUpgradeActive = true;
                         factoryUpgradeButton.setIcon(factoryCheck);
+                        for (int temp = 0;temp<factoryNumber;temp++) {
+                            perSecond = perSecond + factoryPerSec;
+                        }
                         timerUpdate();
                     }
                     else {
